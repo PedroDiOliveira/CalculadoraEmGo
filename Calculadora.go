@@ -89,16 +89,13 @@ func calculadoraGeometria() float64 {
 	//declarando as variaveis
 	var loope bool
 	var escolha int
-	var raio float64
-	var resultado float64
-	var base float64
-	var altura float64
+	var raio, resultado, base, altura float64
 
 	loope = true
 
 	for loope {
 		// Interface de escolha de cálculo
-		fmt.Println("-- Calculadora--Simples--")
+		fmt.Println("-- Calculadora--Geometrica--")
 		fmt.Println()
 		fmt.Println("(1) Circulo")
 		fmt.Println("(2) Quadrado/Retangulo")
@@ -150,6 +147,93 @@ func calculadoraGeometria() float64 {
 				fmt.Printf("A área do retangulo é igual a %.2f\n", resultado)
 			}
 			loope = false
+		case 3:
+			fmt.Println("Area do triangulo = base * altura / 2")
+			fmt.Println("")
+
+			time.Sleep(1 * time.Second)
+
+			fmt.Println("Sabendo disso:")
+			fmt.Println("Qual é o valor da base em metros?")
+			fmt.Scan(&base)
+			fmt.Println("Qual o valor da altura em metros?")
+			fmt.Scan(&altura)
+
+			resultado = base * altura / 2
+
+			fmt.Println("Calculando...")
+			time.Sleep(1 * time.Second)
+
+			fmt.Printf("A area do triangulo é igual a %.2f\n", resultado)
+
+			loope = false
+		default:
+			fmt.Println("|-------------------------------------------|")
+			fmt.Println("")
+			fmt.Println("Voce digitou um numero invalido")
+			fmt.Println("")
+
+			loope = true
+
+		}
+	}
+	return resultado
+}
+
+func calculadoraPorcentagem() float64 {
+	//declarando variaveis
+	var loope bool
+	var escolha int
+	var valor float64
+	var porcentagem float64
+	var aumento float64
+	var reducao float64
+	var resultado float64
+
+	loope = true
+
+	for loope {
+		fmt.Println("|-------Calculadora Percentual--------|")
+		fmt.Println("(1) Aumento percentual")
+		fmt.Println("(2) Redução percentual")
+		fmt.Scan(&escolha)
+
+		switch escolha {
+		case 1:
+			fmt.Println("Digite o valor inicial:")
+			fmt.Scan(&valor)
+			fmt.Println("Em quantos por cento queremos aumentar o valor informado?:")
+			fmt.Scan(&porcentagem)
+
+			aumento = (porcentagem / 100) * valor
+
+			resultado = aumento + valor
+
+			fmt.Println("")
+			fmt.Println("Calculando...")
+			time.Sleep(1 * time.Second)
+
+			fmt.Printf("O valor apos o aumento e de %.2f\n", resultado)
+
+			loope = false
+
+		case 2:
+			fmt.Println("Digite o valor inicial:")
+			fmt.Scan(&valor)
+			fmt.Println("Em quantos por cento queremos reduzir o valor informado?:")
+			fmt.Scan(&porcentagem)
+
+			reducao = (porcentagem / 100) * valor
+
+			resultado = valor - reducao
+
+			fmt.Println("")
+			fmt.Println("Calculando...")
+			time.Sleep(1 * time.Second)
+
+			fmt.Printf("O valor apos a reducao e de %.2f\n", resultado)
+
+			loope = false
 
 		}
 	}
@@ -173,7 +257,7 @@ func main() {
 		time.Sleep(1 * time.Second)
 		fmt.Println("(1) Cálculadora simples")
 		fmt.Println("(2) Geometria")
-		fmt.Println("(3) Coming soon")
+		fmt.Println("(3) Porcentagem")
 		fmt.Println("")
 		fmt.Scan(&Materia)
 		fmt.Println("")
@@ -187,6 +271,10 @@ func main() {
 
 		case 2:
 			calculadoraGeometria()
+			loope = false
+
+		case 3:
+			calculadoraPorcentagem()
 			loope = false
 		default:
 			fmt.Println("Voce não digitou um numero valido!")
