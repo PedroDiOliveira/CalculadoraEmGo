@@ -9,9 +9,7 @@ import (
 func calculadoraSimples() float64 {
 	// Declarando variáveis
 	var escolha int
-	var resultado float64
-	var x float64  // primeiro valor
-	var y float64  // segundo valor
+	var resultado, x, y float64
 	var loope bool // cria um loop que caso o usuário não digite um número válido, ele retorna ao início
 	loope = true
 
@@ -184,11 +182,7 @@ func calculadoraPorcentagem() float64 {
 	//declarando variaveis
 	var loope bool
 	var escolha int
-	var valor float64
-	var porcentagem float64
-	var aumento float64
-	var reducao float64
-	var resultado float64
+	var valor, porcentagem, aumento, reducao, resultado float64
 
 	loope = true
 
