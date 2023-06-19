@@ -14,6 +14,7 @@ func calculadoraSimples() float64 {
 	loope = true
 
 	for loope {
+
 		// Interface de escolha de cálculo
 		fmt.Println("------- Calculadora Simples-------")
 		fmt.Println()
@@ -21,6 +22,7 @@ func calculadoraSimples() float64 {
 		fmt.Println("(2) Subtração")
 		fmt.Println("(3) Multiplicação")
 		fmt.Println("(4) Divisão")
+		fmt.Println("(5) Voltar")
 		fmt.Scan(&escolha)
 		loope = true
 		fmt.Println("")
@@ -38,7 +40,6 @@ func calculadoraSimples() float64 {
 			fmt.Println("Calculando...")
 			time.Sleep(1 * time.Second)
 			fmt.Printf("O resultado é igual a %g \n", resultado)
-			loope = false
 
 		case 2: // Subtração
 			fmt.Println("Qual o primeiro número?")
@@ -50,7 +51,6 @@ func calculadoraSimples() float64 {
 			fmt.Println("Calculando...")
 			time.Sleep(1 * time.Second)
 			fmt.Printf("O resultado é igual a %g \n", resultado)
-			loope = false
 
 		case 3: // Multiplicação
 			fmt.Println("Qual o primeiro número?")
@@ -62,7 +62,6 @@ func calculadoraSimples() float64 {
 			fmt.Println("Calculando...")
 			time.Sleep(1 * time.Second)
 			fmt.Printf("O resultado é igual a %g \n", resultado)
-			loope = false
 
 		case 4: // Divisão
 			fmt.Println("Qual o dividendo?")
@@ -74,6 +73,7 @@ func calculadoraSimples() float64 {
 			fmt.Println("Calculando...")
 			time.Sleep(1 * time.Second)
 			fmt.Printf("O resultado é igual a %g \n", resultado)
+		case 5:
 			loope = false
 
 		default:
@@ -98,7 +98,7 @@ func calculadoraGeometria() float64 {
 		fmt.Println("(1) Circulo")
 		fmt.Println("(2) Quadrado/Retangulo")
 		fmt.Println("(3) Triangulo")
-		fmt.Println("(4) Cilindro")
+		fmt.Println("(4) Voltar")
 		fmt.Scan(&escolha)
 		switch escolha {
 		case 1:
@@ -119,7 +119,7 @@ func calculadoraGeometria() float64 {
 			time.Sleep(1 * time.Second)
 
 			fmt.Printf("A área do circulo e igual a %.2f metros quadrados\n", resultado)
-			loope = false
+
 		case 2:
 			fmt.Println("")
 			fmt.Println("Calculamos multiplicando a base pela altura")
@@ -144,7 +144,7 @@ func calculadoraGeometria() float64 {
 			} else {
 				fmt.Printf("A área do retangulo é igual a %.2f\n", resultado)
 			}
-			loope = false
+
 		case 3:
 			fmt.Println("Area do triangulo = base * altura / 2")
 			fmt.Println("")
@@ -164,7 +164,11 @@ func calculadoraGeometria() float64 {
 
 			fmt.Printf("A area do triangulo é igual a %.2f\n", resultado)
 
+		case 4:
 			loope = false
+			fmt.Println("|-------------------------------------------|")
+			fmt.Println("")
+
 		default:
 			fmt.Println("|-------------------------------------------|")
 			fmt.Println("")
@@ -190,6 +194,7 @@ func calculadoraPorcentagem() float64 {
 		fmt.Println("|-------Calculadora Percentual--------|")
 		fmt.Println("(1) Aumento percentual")
 		fmt.Println("(2) Redução percentual")
+		fmt.Println("(3) Voltar")
 		fmt.Scan(&escolha)
 
 		switch escolha {
@@ -209,8 +214,6 @@ func calculadoraPorcentagem() float64 {
 
 			fmt.Printf("O valor apos o aumento e de %.2f\n", resultado)
 
-			loope = false
-
 		case 2:
 			fmt.Println("Digite o valor inicial:")
 			fmt.Scan(&valor)
@@ -226,49 +229,10 @@ func calculadoraPorcentagem() float64 {
 			time.Sleep(1 * time.Second)
 
 			fmt.Printf("O valor apos a reducao e de %.2f\n", resultado)
-
-			loope = false
-
-		}
-	}
-	return resultado
-}
-
-func main() {
-	fmt.Println("-------------------------------------------")
-	fmt.Println("------- Bem-vindo(a) à calculadora --------")
-	fmt.Println("-------------------------------------------")
-
-	time.Sleep(1 * time.Second)
-
-	// Declaração de variáveis
-	var Materia int // qual calculadora o usuário vai escolher
-	var loope bool
-	loope = true
-	for loope {
-		// Recebendo o valor para Materia, para poder direcionar para a função desejada
-		fmt.Println("Qual assunto vamos abordar? ")
-		time.Sleep(1 * time.Second)
-		fmt.Println("(1) Cálculadora simples")
-		fmt.Println("(2) Geometria")
-		fmt.Println("(3) Porcentagem")
-		fmt.Println("")
-		fmt.Scan(&Materia)
-		fmt.Println("")
-		fmt.Println("|-------------------------------------------|")
-		fmt.Println("")
-
-		switch Materia {
-		case 1:
-			calculadoraSimples()
-			loope = false
-
-		case 2:
-			calculadoraGeometria()
-			loope = false
-
 		case 3:
-			calculadoraPorcentagem()
+			fmt.Println("")
+			fmt.Println("|-------------------------------------------|")
+			fmt.Println("")
 			loope = false
 		default:
 			fmt.Println("Voce não digitou um numero valido!")
@@ -278,7 +242,59 @@ func main() {
 			loope = true
 		}
 	}
-	fmt.Println("")
-	fmt.Println("Fechando progama..")
-	time.Sleep(1 * time.Second)
+	return resultado
+}
+
+func main() {
+	var ligado bool
+	ligado = true
+
+	fmt.Println("-------------------------------------------")
+	fmt.Println("------- Bem-vindo(a) à calculadora --------")
+	fmt.Println("-------------------------------------------")
+	fmt.Println("Qual assunto vamos abordar? ")
+	for ligado {
+
+		time.Sleep(1 * time.Second)
+
+		// Declaração de variáveis
+		var Materia int // qual calculadora o usuário vai escolher
+		var loope bool
+		loope = true
+		for loope {
+			// Recebendo o valor para Materia, para poder direcionar para a função desejada
+
+			time.Sleep(1 * time.Second)
+			fmt.Println("(1) Cálculadora simples")
+			fmt.Println("(2) Geometria")
+			fmt.Println("(3) Porcentagem")
+			fmt.Println("(4) Sair")
+			fmt.Println("")
+			fmt.Scan(&Materia)
+			fmt.Println("")
+			fmt.Println("|-------------------------------------------|")
+			fmt.Println("")
+
+			switch Materia {
+			case 1:
+				calculadoraSimples()
+			case 2:
+				calculadoraGeometria()
+			case 3:
+				calculadoraPorcentagem()
+			case 4:
+				fmt.Println("")
+				fmt.Println("Fechando progama..")
+				time.Sleep(1 * time.Second)
+				loope = false
+				ligado = false
+			default:
+				fmt.Println("Voce não digitou um numero valido!")
+				fmt.Println("")
+				fmt.Println("Tente novamente")
+				fmt.Println("")
+				loope = true
+			}
+		}
+	}
 }
